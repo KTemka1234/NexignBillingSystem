@@ -1,6 +1,6 @@
 package ru.learnhub.switchboard.service.messaging;
 
-import dto.CallDataRecord;
+import ru.learnhub.commondto.dto.CallDataRecord;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.jms.core.JmsTemplate;

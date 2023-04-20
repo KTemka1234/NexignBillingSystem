@@ -15,6 +15,7 @@
   <modules>
     <module>Switchboard</module>
     <module>CommonDTO</module>
+    <module>BRT</module>
   </modules>
 
   <properties>

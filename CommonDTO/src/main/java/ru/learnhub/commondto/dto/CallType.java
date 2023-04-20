@@ -1,4 +1,4 @@
-package dto;
+package ru.learnhub.commondto.dto;
 
 
 import java.util.HashMap;

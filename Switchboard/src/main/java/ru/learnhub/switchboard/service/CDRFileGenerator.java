@@ -1,14 +1,13 @@
 package ru.learnhub.switchboard.service;
 
-import dto.CallDataRecord;
-import dto.CallType;
+import ru.learnhub.commondto.dto.CallDataRecord;
+import ru.learnhub.commondto.dto.CallType;
 import org.springframework.stereotype.Service;
 
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.file.Path;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;

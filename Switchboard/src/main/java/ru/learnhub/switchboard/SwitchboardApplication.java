@@ -1,6 +1,6 @@
 package ru.learnhub.switchboard;
 
-import dto.CallDataRecord;
+import ru.learnhub.commondto.dto.CallDataRecord;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -8,8 +8,6 @@ import ru.learnhub.switchboard.service.CDRFileGenerator;
 import ru.learnhub.switchboard.service.messaging.SwitchboardMessageSender;
 
 import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
 
 @SpringBootApplication
