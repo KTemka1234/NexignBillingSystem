@@ -17,7 +17,7 @@ import java.util.*;
 @Service
 public class CDRFileGenerator {
 
-    private static final int MAX_CALLS_COUNT = 15;
+    private static final int MAX_CALLS_COUNT = 5;
     private static final int MONTHS_BEFORE = 6;
     private static final int MAX_CALL_DURATION = 360; // в минутах
 
@@ -90,9 +90,12 @@ public class CDRFileGenerator {
 
     private String getRandomUniqueNumber() {
         StringBuilder sb = new StringBuilder(11);
+        // Список кодов оператора "Ромашка"
+        ArrayList<String> operator_codes = new ArrayList<>(Arrays.asList("373", "521", "191"));
         do {
             sb.append(7); // Первая цифра номера всегда одинаковая
-            for (int i = 0; i < 10; i++) { // Добавляем ещё 10 недостающих цифр номера
+            sb.append(operator_codes.get(random.nextInt(3)));
+            for (int i = 0; i < 7; i++) { // Добавляем ещё 10 недостающих цифр номера
                 sb.append(random.nextInt(10));
             }
         } while (generatedNumbers.contains(sb.toString()));

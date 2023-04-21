@@ -21,7 +21,7 @@ public class BRTMessageSender {
     }
 
     public void sendMessage(List<CallDataRecordPlus> listCdr) {
-        log.info("--- Передача CDR+ файла из BRT в HRS сервис ---");
+        log.info("--- Передача CDR+ файла от BRT в HRS сервис ---");
         jmsTemplate.convertAndSend(cdrPlusMq, listCdr);
     }
 }

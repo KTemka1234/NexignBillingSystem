@@ -21,7 +21,7 @@ public class SwitchboardMessageSender {
     }
 
     public void sendMessage(List<CallDataRecord> records) {
-        log.info("--- Передача CDR-файла из коммутатора в сервис BRT ---");
+        log.info("--- Передача CDR-файла от коммутатора в сервис BRT ---");
         jmsTemplate.convertAndSend(cdrMq, records);
     }
 }

@@ -23,14 +23,14 @@ public class BRTMessageListener {
     }
 
     @JmsListener(destination = "${cdr.mq}")
-    public void processCDRMq(@Payload List<CallDataRecord> cdrList) {
+    public void processCDRMQ(@Payload List<CallDataRecord> cdrList) {
         log.info("--- Получение CDR-файла от коммутатора в BRT сервисе ---");
         messageSender.sendMessage(brtService.convertCDRToCDRPlus(cdrList));
     }
 
-    @JmsListener(destination = "${cdrplus.mq}")
-    public void processCDRPlusMq(@Payload List<CallDataRecordPlus> cdrPlusList) {
-        log.info("--- Получение CDR+ файла от HRS в BRT сервисе ---");
-        brtService.paySubscriptionFee(cdrPlusList);
+    @JmsListener(destination = "${phone-balance.mq}")
+    public void processCDRPlusMQ(@Payload List<CallDataRecordPlus> cdrPlusList) {
+        log.info("--- Получение файла обновления баланса от HRS в BRT сервисе ---");
+        //brtService.paySubscriptionFee(cdrPlusList);
     }
 }
