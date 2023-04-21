@@ -1,6 +1,4 @@
-package ru.learnhub.hrs;
-
-import ru.learnhub.commondto.dto.CallType;
+package ru.learnhub.commondto;
 
 import java.util.HashMap;
 import java.util.Map;

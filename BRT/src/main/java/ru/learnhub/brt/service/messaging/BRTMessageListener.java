@@ -33,6 +33,6 @@ public class BRTMessageListener {
     @JmsListener(destination = "${phone-balance.mq}")
     public void processCDRPlusMQ(@Payload HashMap<String, PhoneNumber> billingMap) {
         log.info("--- Получение файла обновления баланса от HRS в BRT сервисе ---");
-        brtService.paySubscriptionFee(billingMap);
+        //brtService.paySubscriptionFee(billingMap);
     }
 }

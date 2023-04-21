@@ -8,6 +8,7 @@ import ru.learnhub.commondto.entity.PhoneNumber;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 @Slf4j
@@ -23,6 +24,9 @@ public class HRSMessageSender {
 
     public void sendMessage(HashMap<String, PhoneNumber> billingMap) {
         log.info("--- Передача Billing файла от HRS в BRT сервис ---");
-        jmsTemplate.convertAndSend(phoneBalanceMQ, billingMap);
+        for (Map.Entry<String, PhoneNumber> entry : billingMap.entrySet()) {
+            System.out.println(entry.getKey() + " " + entry.getValue());
+        }
+        //jmsTemplate.convertAndSend(phoneBalanceMQ, billingMap);
     }
 }

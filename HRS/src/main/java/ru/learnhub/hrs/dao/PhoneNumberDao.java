@@ -4,8 +4,6 @@ import org.springframework.stereotype.Component;
 import ru.learnhub.commondto.entity.PhoneNumber;
 import ru.learnhub.hrs.repository.PhoneNumberRepository;
 
-import java.math.BigDecimal;
-
 @Component
 public class PhoneNumberDao {
 
@@ -16,6 +14,6 @@ public class PhoneNumberDao {
     }
 
     public PhoneNumber getPhoneNumber(String phoneNumber) {
-        return repository.findPhoneNumberByPhoneNumber(phoneNumber);
+        return repository.findByPhoneNumber(phoneNumber);
     }
 }

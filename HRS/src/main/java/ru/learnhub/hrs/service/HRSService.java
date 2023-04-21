@@ -3,9 +3,8 @@ package ru.learnhub.hrs.service;
 import org.springframework.stereotype.Service;
 import ru.learnhub.commondto.dto.CallDataRecord;
 import ru.learnhub.commondto.dto.CallDataRecordPlus;
-import ru.learnhub.commondto.dto.CallType;
 import ru.learnhub.commondto.entity.PhoneNumber;
-import ru.learnhub.hrs.TariffType;
+import ru.learnhub.commondto.TariffType;
 import ru.learnhub.hrs.dao.PhoneNumberDao;
 
 import java.math.BigDecimal;
@@ -39,7 +38,7 @@ public class HRSService {
             BigDecimal newBalance = bill.getBalance().subtract(callCost);
             bill.setBalance(newBalance);
         }
-        return null;
+        return billingMap;
     }
 
     // Считаем длительность разговора в минутах

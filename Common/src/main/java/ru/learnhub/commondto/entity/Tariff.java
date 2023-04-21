@@ -19,6 +19,6 @@ public class Tariff {
     @Column(name = "description")
     private String description;
 
-    @OneToMany(mappedBy = "tariff", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "tariff", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<PhoneNumber> phonesList;
 }

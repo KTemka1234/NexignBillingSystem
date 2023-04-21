@@ -21,7 +21,7 @@ public class PhoneNumber {
     @Column(name = "balance")
     private BigDecimal balance;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn
     private Tariff tariff;
 }
