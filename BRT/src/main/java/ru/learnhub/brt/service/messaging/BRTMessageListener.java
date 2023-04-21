@@ -7,7 +7,9 @@ import org.springframework.stereotype.Service;
 import ru.learnhub.brt.service.BRTService;
 import ru.learnhub.commondto.dto.CallDataRecord;
 import ru.learnhub.commondto.dto.CallDataRecordPlus;
+import ru.learnhub.commondto.entity.PhoneNumber;
 
+import java.util.HashMap;
 import java.util.List;
 
 @Service
@@ -29,8 +31,8 @@ public class BRTMessageListener {
     }
 
     @JmsListener(destination = "${phone-balance.mq}")
-    public void processCDRPlusMQ(@Payload List<CallDataRecordPlus> cdrPlusList) {
+    public void processCDRPlusMQ(@Payload HashMap<String, PhoneNumber> billingMap) {
         log.info("--- Получение файла обновления баланса от HRS в BRT сервисе ---");
-        //brtService.paySubscriptionFee(cdrPlusList);
+        brtService.paySubscriptionFee(billingMap);
     }
 }

@@ -13,15 +13,15 @@ import java.util.List;
 public class BRTMessageSender {
 
     private final JmsTemplate jmsTemplate;
-    private final String cdrPlusMq;
+    private final String cdrPlusMQ;
 
-    public BRTMessageSender(JmsTemplate jmsTemplate, @Value("${cdrplus.mq}") String cdrPlusMq) {
+    public BRTMessageSender(JmsTemplate jmsTemplate, @Value("${cdrplus.mq}") String cdrPlusMQ) {
         this.jmsTemplate = jmsTemplate;
-        this.cdrPlusMq = cdrPlusMq;
+        this.cdrPlusMQ = cdrPlusMQ;
     }
 
     public void sendMessage(List<CallDataRecordPlus> listCdr) {
         log.info("--- Передача CDR+ файла от BRT в HRS сервис ---");
-        jmsTemplate.convertAndSend(cdrPlusMq, listCdr);
+        jmsTemplate.convertAndSend(cdrPlusMQ, listCdr);
     }
 }

@@ -4,7 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
-import ru.learnhub.brt.entity.PhoneNumber;
+import ru.learnhub.commondto.entity.PhoneNumber;
 
 import java.math.BigDecimal;
 

@@ -3,7 +3,7 @@ package ru.learnhub.brt.service;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import ru.learnhub.brt.dao.ClientDao;
-import ru.learnhub.brt.entity.PhoneNumber;
+import ru.learnhub.commondto.entity.PhoneNumber;
 import ru.learnhub.commondto.dto.CallDataRecord;
 import ru.learnhub.commondto.dto.CallDataRecordPlus;
 
@@ -35,10 +35,9 @@ public class BRTService {
                 .toList();
     }
 
-    public void paySubscriptionFee(List<CallDataRecordPlus> cdrPlusList) {
-        //TODO Реализовать обновление баланса
-//        cdrPlusList.forEach(cdrPlus -> clientDao.updateUserBalance(
-//                cdrPlus.getCallDataRecord().getPhoneNumber(),
-//                cdrPlus.ge));
+    public void paySubscriptionFee(HashMap<String, PhoneNumber> billingMap) {
+        for (Map.Entry<String, PhoneNumber> entry : billingMap.entrySet()) {
+            clientDao.updateUserBalance(entry.getKey(), entry.getValue().getBalance());
+        }
     }
 }

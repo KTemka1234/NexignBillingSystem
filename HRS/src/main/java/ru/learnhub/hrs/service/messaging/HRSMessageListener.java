@@ -14,14 +14,16 @@ import java.util.List;
 public class HRSMessageListener {
 
     private final HRSService hrsService;
+    private final HRSMessageSender messageSender;
 
-    public HRSMessageListener(HRSService hrsService) {
+    public HRSMessageListener(HRSService hrsService, HRSMessageSender messageSender) {
         this.hrsService = hrsService;
+        this.messageSender = messageSender;
     }
 
     @JmsListener(destination = "${cdrplus.mq}")
     public void processCDRPlusMQ(@Payload List<CallDataRecordPlus> cdrPlusList) {
         log.info("--- Получение CDR+ файла от BRT в HRS сервисе ---");
-        log.info("Размер списка: {}", cdrPlusList.size());
+        messageSender.sendMessage(hrsService.calcSubscriptionFee(cdrPlusList));
     }
 }

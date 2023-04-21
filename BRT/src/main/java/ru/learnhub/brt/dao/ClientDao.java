@@ -1,7 +1,7 @@
 package ru.learnhub.brt.dao;
 
 import org.springframework.stereotype.Component;
-import ru.learnhub.brt.entity.PhoneNumber;
+import ru.learnhub.commondto.entity.PhoneNumber;
 import ru.learnhub.brt.repository.ClientRepository;
 
 import java.math.BigDecimal;

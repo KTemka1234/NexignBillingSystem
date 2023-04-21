@@ -10,11 +10,11 @@ public enum CallType {
     OUTGOING("01");
 
     // Хэш-таблица для быстрого получения объекта enum по значению поля index
-    private static Map<String, CallType> STRING_MAP = new HashMap<>();
+    private static Map<String, CallType> callMap = new HashMap<>();
 
     static {
         for (CallType callType : values()) {
-            STRING_MAP.put(callType.index, callType);
+            callMap.put(callType.index, callType);
         }
     }
 
@@ -29,8 +29,8 @@ public enum CallType {
     }
 
     public static CallType getInstanceByIndex(String index) {
-        if (STRING_MAP.containsKey(index)) {
-            return STRING_MAP.get(index);
+        if (callMap.containsKey(index)) {
+            return callMap.get(index);
         }
         return null;
     }

@@ -11,7 +11,7 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>CommonDTO</artifactId>
+    <artifactId>Common</artifactId>
     <name>CommonDTO</name>
     <description>DTO for modules</description>
 

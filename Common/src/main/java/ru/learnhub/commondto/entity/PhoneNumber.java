@@ -1,7 +1,8 @@
-package ru.learnhub.brt.entity;
+package ru.learnhub.commondto.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import ru.learnhub.commondto.entity.Tariff;
 
 import java.math.BigDecimal;
 
