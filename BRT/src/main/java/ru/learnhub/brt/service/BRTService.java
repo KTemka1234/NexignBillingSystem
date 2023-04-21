@@ -1,30 +1,42 @@
 package ru.learnhub.brt.service;
 
 import org.springframework.stereotype.Service;
-import ru.learnhub.brt.repository.ClientRepository;
-import ru.learnhub.brt.service.messaging.BRTMessageSender;
+import ru.learnhub.brt.dao.ClientDao;
+import ru.learnhub.brt.entity.PhoneNumber;
 import ru.learnhub.commondto.dto.CallDataRecord;
 import ru.learnhub.commondto.dto.CallDataRecordPlus;
 
-import java.util.List;
+import java.math.BigDecimal;
+import java.util.*;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 @Service
 public class BRTService {
 
-    private final ClientRepository clientRepository;
-    private final BRTMessageSender messageSender;
+    private final ClientDao clientDao;
 
-    public BRTService(ClientRepository clientRepository, BRTMessageSender messageSender) {
-        this.clientRepository = clientRepository;
-        this.messageSender = messageSender;
+    public BRTService(ClientDao clientDao) {
+        this.clientDao = clientDao;
     }
 
+    // Преобразуем CDR в CDR+
     public List<CallDataRecordPlus> convertCDRToCDRPlus(List<CallDataRecord> cdrList) {
-        //TODO
-        return null;
+        // Получаем из БД номера клиентов и преобразуем в HashMap для дальнейшей сортировки
+        Map<String, PhoneNumber> clientsNums = clientDao.getAllUsersPhoneNums().stream()
+                .collect(Collectors.toMap(PhoneNumber::getPhoneNumber, Function.identity()));
+        // Сортируем CDRs по номеру и балансу на нём и создаём список CDR+
+        return cdrList.stream().filter(
+                cdr -> clientsNums.containsKey(cdr.getPhoneNumber()) &&
+                        clientsNums.get(cdr.getPhoneNumber()).getBalance().compareTo(BigDecimal.ZERO) > 0
+                ).map(cdr -> new CallDataRecordPlus(cdr, clientsNums.get(cdr.getPhoneNumber()).getTariff().getId()))
+                .toList();
     }
 
-    public void sendCDRPlus(List<CallDataRecordPlus> cdrPlusList) {
-        messageSender.sendMessage(cdrPlusList);
+    public void paySubscriptionFee(List<CallDataRecordPlus> cdrPlusList) {
+        //TODO Реализовать обновление баланса
+//        cdrPlusList.forEach(cdrPlus -> clientDao.updateUserBalance(
+//                cdrPlus.getCallDataRecord().getPhoneNumber(),
+//                cdrPlus.ge));
     }
 }

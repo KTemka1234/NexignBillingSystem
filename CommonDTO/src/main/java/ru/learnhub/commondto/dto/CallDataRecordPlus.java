@@ -10,5 +10,5 @@ import java.io.Serializable;
 public class CallDataRecordPlus implements Serializable {
 
     private final CallDataRecord callDataRecord;
-    private final long tariffId;
+    private final String tariffId;
 }

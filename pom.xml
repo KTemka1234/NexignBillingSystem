@@ -16,6 +16,7 @@
     <module>Switchboard</module>
     <module>CommonDTO</module>
     <module>BRT</module>
+      <module>HRS</module>
   </modules>
 
   <properties>
